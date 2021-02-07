@@ -1,0 +1,27 @@
+{
+  "name": "react-startup",
+  "version": "1.0.0",
+  "description": "react-startup",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-kala/react-startup.git"
+  },
+  "keywords": [],
+  "author": "thomas.yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-kala/react-startup/issues"
+  },
+  "homepage": "https://github.com/thomas-kala/react-startup#readme",
+  "devDependencies": {
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}

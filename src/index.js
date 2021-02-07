@@ -1,21 +1,28 @@
 import _ from "lodash";
 import printMe from "./print.js";
+import './font/iconfont.css';
+import './style.css';
 function component() {
   var element = document.createElement("div");
   var btn = document.createElement("button");
-  // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
   element.innerHTML = _.join(["Hello", "webpack"], " ");
   btn.innerHTML = "点击这里，然后查看 console！";
+  element.classList.add('hello');
+  element.classList.add('ef-icon-pre-jianhao');
   btn.onclick = printMe;
   element.appendChild(btn);
   return element;
 }
 
-document.body.appendChild(component());
+let element = component(); // 存储 element，以在 print.js 修改时重新渲染
+document.body.appendChild(element);
 
 if (module.hot) {
   module.hot.accept("./print.js", function () {
     console.log("Accepting the updated printMe module!");
-    printMe();
+    //printMe();
+    document.body.removeChild(element);
+    element = component();
+    document.body.appendChild(element);
   });
 }

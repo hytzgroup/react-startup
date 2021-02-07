@@ -5,17 +5,12 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    app: "./src/index.js",
-    print: "./src/print.js",
+    app: "./src/index.js"
   },
   devtool: "inline-source-map",
-  devServer: {
-    contentBase: "./dist",
-  },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: '/'// webpack-dev-middleware时使用
+    path: path.resolve(__dirname, "./dist")
   },
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),

@@ -1,18 +1,17 @@
-const express = require('express');
+const webpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
 
-const app = express();
 const config = require('./webpack.config.js');
+const options = {
+  contentBase: './dist',
+  hot: true,
+  host: 'localhost'
+};
+
+webpackDevServer.addDevServerEntrypoints(config, options);
 const compiler = webpack(config);
+const server = new webpackDevServer(compiler, options);
 
-// 告诉 express 使用 webpack-dev-middleware，
-// 以及将 webpack.config.js 配置文件作为基础配置
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath
-}));
-
-// 将文件 serve 到 port 3000。
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!\n');
+server.listen(5000, 'localhost', () => {
+  console.log('dev server listening on port 5000');
 });

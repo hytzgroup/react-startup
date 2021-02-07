@@ -15,8 +15,7 @@ module.exports = {
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "/", // webpack-dev-middleware时使用
+    path: path.resolve(__dirname, "./dist")
   },
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),

@@ -22,11 +22,10 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
+            presets: ["@babel/preset-react"],
           },
         },
       },
@@ -47,7 +46,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new WebpackManifestPlugin({}),
-    new HtmlWebpackPlugin({ title: "React基本配置" }),
+    new HtmlWebpackPlugin({
+      title: "React基本配置",
+      template: "./public/index.html",
+      filename: "./index.html",
+      //favicon: "./public/favicon.ico",
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };

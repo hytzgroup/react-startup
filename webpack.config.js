@@ -8,12 +8,20 @@ const webpack = require("webpack");
 module.exports = {
     mode: "development",
     entry: {
-        app: "./src/index.js",
+        app: "./src/index.tsx",
     },
     devtool: "inline-source-map",
     devServer: {
         contentBase: "./dist",
         hot: true,
+    },
+    externals: {
+        // "react": "React",
+        // "react-dom": "ReactDOM",
+        // "react-router-dom":"react-router-dom"
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".json"],
     },
     output: {
         filename: "[name].bundle.js",
@@ -30,21 +38,18 @@ module.exports = {
                     },
                 },
             },
-            // {
-            //   test: /\.css$/,
-            //   use: ["style-loader", "css-loader"],
-            // },
+            { test: /\.tsx?$/, loader: "ts-loader" },
             {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
                 test: /\.less$/i,
-                use: ['style-loader', "css-loader", "less-loader"],
+                use: ["style-loader", "css-loader", "less-loader"],
             },
             {
                 test: /\.scss|sass$/i,
-                use: ['style-loader', "css-loader", "sass-loader"],
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
